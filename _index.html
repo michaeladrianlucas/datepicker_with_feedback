@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Book 2 Wheel Denmark| Rent Bike, Explore World </title>
+
+  <link rel="shortcut icon" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/flatpickr.min.css">
+  <link rel="stylesheet" href="css/datepicker.css">
+
+
+ </head>
+  <body>
+    <body>
+      <div class="form-container">
+       <form id="reserve-form" name="reserveForm" method="post" class="ex-form">
+        <table id="pg1" class="pg1" border="1">
+          <tr><td>
+               <label class="dtp-input-label">Pick Up</label></td></tr>
+
+          <tr><td>
+                <input type="text" name="date_from" id="date-start"
+                       class="datepicker" onchange="GetDays()"></td></tr>
+        </table>
+
+        <table id="pg2" class="pg2" border="1">
+          <tr><td>
+              <label class="dtp-input-label">Return</label></td></tr>
+
+          <tr><td>
+              <input type="text" id="date-end" name="date_to"
+                    class="datepicker" onchange="GetDays()"></td></tr>
+        </table>
+
+         <table id="pg4" class="pg4" border="1">
+           <tr><td>
+             <label class="form">Price per day:</label>
+                <input type="text" class="textbox" id="price-per-day"
+                     name="price-per-day"/></div></td><tr>
+          <tr><td>
+           <tr><td>
+             <label class="form">Date From:</label>
+                <input type="text" class="textbox" id="return-date-from"
+                     name="return-date-from"/></div></td><tr>
+          <tr><td>
+             <label class="form">Date To:</label>
+                <input type="text" class="textbox" id="return-date-to"
+                     name="return-date-to"/></div></td><tr>
+           <tr><td>
+             <label class="form">Number of days:</label>
+                <input type="text" class="textbox" id="numdays"
+                     name="numdays"/></div></td><tr>
+            <tr><td>
+              </td></tr>
+
+          </table>
+          <div class="form-nav">
+            <a class="form-nav-next" onclick="gotoPage1()">Back</a>
+            <a class="form-nav-next" onclick="gotoPage2()">Next</a></div>
+              <!--<input type="submit" class="form-button">
+              -->
+       </form>
+      </div> <!-- container -->
+      <script type="text/javascript" src="js/flatpickr.min.js"></script>
+<!--intitialize datepicker -->
+      <script type="text/javascript">
+      flatpickr(".datepicker", {
+         minDate: new Date(),
+         inline: true,
+         altInput: true,
+         altFormat: "F j, Y"
+         //maxDate: "2016-12-20",
+         //enableTime: true,
+         // create an extra input solely for display purposes
+         //altInput: true,
+       });
+
+      </script>
+      <script type="text/javascript">
+
+
+            function GetDays(){
+              var dropdt = new Date(document.getElementById("date-end").value);
+              var pickdt = new Date(document.getElementById("date-start").value);
+              var daysBetween = parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
+
+              if(isNaN(daysBetween) = true){
+                document.getElementById("numdays").value = 1;
+              }else{
+                document.getElementById("numdays").value = daysBetween;
+              }
+           }
+
+           function ShowDay1(){
+             document.getElementById("return-date-from").style.display = 'inline-block';
+             var pickdt = new Date(document.getElementById("date-start").value);
+
+             document.getElementById("return-date-from").value = pickdt;
+             document.getElementById("numdays").value = 1;
+
+           }
+           function ShowDay2(){
+             document.getElementById("return-date-to").style.display = 'inline-block';
+             var dropdt = new Date(document.getElementById("date-end").value);
+
+            document.getElementById("return-date-to").value = dropdt;
+
+            //var daysBetween = parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
+
+            //document.getElementById("numdays").value = GetDays();
+
+           }
+      </script>
+      </script>
+      <script>
+         window.onload = function(){
+              document.getElementById('pg1').style.display = 'block';
+              document.getElementById('pg2').style.display = 'none';
+              document.getElementById('pg3').style.display = 'none';
+
+            }
+          function gotoPage3(){
+            document.getElementById('pg1').style.display = 'none';
+            document.getElementById('pg2').style.display = 'none';
+            document.getElementById('pg3').style.display = 'block';
+          }
+          function gotoPage2(){
+            document.getElementById('pg1').style.display = 'none';
+            document.getElementById('pg2').style.display = 'block';
+            document.getElementById('pg3').style.display = 'none';
+          }
+
+          function gotoPage1(){
+            document.getElementById('pg1').style.display = 'block';
+            document.getElementById('pg2').style.display = 'none';
+            document.getElementById('pg3').style.display = 'none';
+          }
+      </script>
+    </body>
+<html>

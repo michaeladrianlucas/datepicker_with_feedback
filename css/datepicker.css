@@ -1,0 +1,550 @@
+/* ==========================================================================
+RESET
+
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+   ========================================================================== */
+   html, body, div, span, applet, object, iframe,
+   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+   a, abbr, acronym, address, big, cite, code,
+   del, dfn, em, img, ins, kbd, q, s, samp,
+   small, strike, strong, sub, sup, tt, var,
+   b, u, i, center,
+   dl, dt, dd, ol, ul, li,
+   fieldset, form, label, legend,
+   table, caption, tbody, tfoot, thead, tr, th, td,
+   article, aside, canvas, details, embed,
+   figure, figcaption, footer, header, hgroup,
+   menu, nav, output, ruby, section, summary,
+   time, mark, audio, video {
+   	margin: 0;
+   	padding: 0;
+   	border: 0;
+   	font-size: 100%;
+   	font: inherit;
+   	vertical-align: baseline;
+   }
+   /* HTML5 display-role reset for older browsers */
+   article, aside, details, figcaption, figure,
+   footer, header, hgroup, menu, nav, section {
+   	display: block;
+   }
+   body {
+   	line-height: 1;
+   }
+   ol, ul {
+   	list-style: none;
+   }
+   blockquote, q {
+   	quotes: none;
+   }
+   blockquote:before, blockquote:after,
+   q:before, q:after {
+   	content: '';
+   	content: none;
+   }
+   table {
+   	border-collapse: collapse;
+   	border-spacing: 0;
+}
+
+/* ----------------------------------------------------------------------------------------------------
+Super Form Reset
+A couple of things to watch out for:
+- IE8: If a text input doesn't have padding on all sides or none the text won't be centered.
+- The default border sizes on text inputs in all UAs seem to be slightly different. You're better off using custom borders.
+- You NEED to set the font-size and family on all form elements
+- Search inputs need to have their appearance reset and the box-sizing set to content-box to match other UAs
+- You can style the upload button in webkit using ::-webkit-file-upload-button
+- ::-webkit-file-upload-button selectors can't be used in the same selector as normal ones. FF and IE freak out.
+- IE: You don't need to fake inline-block with labels and form controls in IE. They function as inline-block.
+- By turning off ::-webkit-search-decoration, it removes the extra whitespace on the left on search inputs
+----------------------------------------------------------------------------------------------------*/
+
+input,
+label,
+select,
+button,
+textarea
+{
+	margin:0;
+	border:0;
+	padding:0;
+	display:inline-block;
+	vertical-align:middle;
+	white-space:normal;
+	background:none;
+	line-height:1;
+
+	/* Browsers have different default form fonts */
+	font-size:13px;
+	font-family:Arial;
+}
+
+/* Remove the stupid outer glow in Webkit */
+input:focus
+{
+	outline:0;
+}
+
+/* Box Sizing Reset
+-----------------------------------------------*/
+
+/* All of our custom controls should be what we expect them to be */
+input,
+textarea
+{
+	-webkit-box-sizing:content-box;
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+}
+
+/* These elements are usually rendered a certain way by the browser */
+button,
+input[type=reset],
+input[type=button],
+input[type=submit],
+input[type=checkbox],
+input[type=radio],
+select
+{
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
+/* Text Inputs
+-----------------------------------------------*/
+
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=email],
+input[type=month],
+input[type=number],
+input[type=password],
+input[type=range],
+input[type=search],
+input[type=tel],
+input[type=text],
+input[type=time],
+input[type=url],
+input[type=week]
+{
+}
+
+/* Button Controls
+-----------------------------------------------*/
+
+input[type=checkbox],
+input[type=radio]
+{
+	width:13px;
+	height:13px;
+}
+
+/* File Uploads
+-----------------------------------------------*/
+
+input[type=file]
+{
+
+}
+
+/* Search Input
+-----------------------------------------------*/
+
+/* Make webkit render the search input like a normal text field */
+input[type=search]
+{
+	-webkit-appearance:textfield;
+	-webkit-box-sizing:content-box;
+}
+
+/* Turn off the recent search for webkit. It adds about 15px padding on the left */
+::-webkit-search-decoration
+{
+	display:none;
+}
+
+/* Buttons
+-----------------------------------------------*/
+
+button,
+input[type="reset"],
+input[type="button"],
+input[type="submit"]
+{
+	/* Fix IE7 display bug */
+	overflow:visible;
+	width:auto;
+}
+
+/* IE8 and FF freak out if this rule is within another selector */
+::-webkit-file-upload-button
+{
+	padding:0;
+	border:0;
+	background:none;
+}
+
+/* Textarea
+-----------------------------------------------*/
+
+textarea
+{
+	/* Move the label to the top */
+	vertical-align:top;
+
+	/* Turn off scroll bars in IE unless needed */
+	overflow:auto;
+}
+
+/* Selects
+-----------------------------------------------*/
+
+select
+{
+
+}
+
+select[multiple]
+{
+	/* Move the label to the top */
+	vertical-align:top;
+}
+
+/***************************
+    Input Range Reset
+    https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
+*****************************/
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made*/
+  width: 100%; /* Specific width is required for Firefox.*/
+  background: transparent; /* Otherwise white in Chrome */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 1px solid #000000;
+  height: 32px;
+  width: 16px;
+  border-radius: 0;
+  background: #ffffff;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 32px;
+  width: 16px;
+  border-radius: 0;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+  border: 1px solid #000000;
+  height: 32px;
+  width: 16px;
+  border-radius: 0;
+  background: #ffffff;
+  cursor: pointer;
+}
+/* Styles for the track */
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  box-shadow: none;
+  background: #333;
+  border-radius: 0;
+  border: 0.2px solid #333;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #333;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  box-shadow: none;
+  background: #333;
+  border-radius: 0;
+  border: 0.2px solid #333;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 2px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 0;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #333;
+  border: 0.2px solid #333;
+  border-radius: none;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #333;
+}
+input[type=range]::-ms-fill-upper {
+  background: #333;
+  border: 0.2px solid #333;
+  border-radius: none;
+  box-shadow: none;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+body{
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+
+}
+
+
+/***************************
+    Reservation Form
+*****************************/
+.form-container{
+
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.ex-form{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: inline-block;
+  width: 265px;
+  height: auto;
+
+  margin: 100px auto;
+  padding: 20px;
+  border: 2px solid #333;
+
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+  0 6px 6px rgba(0,0,0,0.23);
+  border-radius: 2px;
+
+  background: #FFF;
+}
+/*
+.form-title{
+
+  height: auto;
+  text-align: center;
+  font-family: "LATO", sans-serif;
+  font-size: 40px;
+  padding: 10px 0 20px 0;
+  border-bottom: 1px solid #333;
+}
+.item-info-id {
+
+}
+*/
+.dtp-input-label{
+
+  margin: 0;
+  height: auto;
+  padding: 10px 0;
+  width: 100%;
+  text-align: center;
+  background: #333;
+  color: #fff;
+}
+
+.pg1 {
+  display: inline-block;
+
+  float: left;
+}
+.pg2 {
+  display: inline-block;
+  height: auto;
+
+  float: left;
+}
+.pg3 {
+  display: inline-block;
+  height: auto;
+
+  float: left;
+  display: none;
+}
+.pg4 {
+  display: block;
+  height: auto;
+  width: 100%;
+  float: left;
+
+  background: #FFF;
+}
+.form-info-label {
+    display: inline-block;
+    float: left;
+    line-height: 22px;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    width: 120px;
+}
+
+.form-info-box{
+  display: inline-block;
+  float: right;
+  line-height: 22px;
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  width: 90px;
+  text-align: right;
+}
+.form-nav{
+  display: block;
+  float: left;
+  margin-top: 20px;
+  padding: 10px 0;
+  height: auto;
+  width: 100%;
+  background: #333;
+}
+.form-nav-next {
+  display: block;
+  float: left;
+  width: 50%;
+  text-align: center;
+  color: #FFF;
+}
+
+#return-date-to, #return-date-from{
+  display: none;
+}
+
+
+/*
+.button-wrap {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.form-button{
+  display: inline-block;
+  position: relative;
+  left: 0;
+  transform: translateX(-50%);
+  margin: 40px auto;
+  text-align: center;
+
+  padding: 20px 50px;
+  border: 2px #333 solid;
+  border-radius: 2px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19),
+  0 6px 6px rgba(0,0,0,0.23);
+  display: none;
+}
+
+.form-button:hover{
+  position:relative;
+  bottom: 10px;
+}*/
+/**************************
+FLATPICKR Date and Time Picker
+**************************/
+.flatpickr-calendar {
+    background: #fff;
+    display: inline-block;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+    padding: 0;
+    animation: none;
+    direction: ltr;
+    border: 1px solid #e6e6e6;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 2px;
+    position: absolute;
+    top:-15px;
+    width: 265px;
+    box-sizing: border-box;
+}
+.flatpickr-calendar {
+  font-family: "Roboto", sans-serif;
+}
+.flatpickr-input {
+    cursor: grab;
+}
+
+.flatpickr-month {
+    border-radius: 0;
+    background: #FFF;
+    color: #333;
+    fill: #FFF;
+    height: 45px;
+    line-height: 24px;
+    text-align: center;
+    position: relative;
+    user-select: none;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:focus,
+.flatpickr-day.selected:hover,
+.flatpickr-day.selected.prevMonthDay,
+.flatpickr-day.selected.nextMonthDay {
+    background: #EF5350;
+    color: #fff;
+    border-color: #EF5350;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <title>Awesome DatePicker</title>
+
+  <link rel="shortcut icon" href="img/favicon.png">
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/flatpickr.min.css">
+  <link rel="stylesheet" href="css/datepicker.css">
+
+
+ </head>
+  <body>
+    <body>
+      <div class="form-container">
+       <form id="reserve-form" name="reserveForm" method="post" class="ex-form">
+        <table id="pg1" class="pg1" border="1">
+          <tr><td>
+               <label class="dtp-input-label">Pick Up</label></td></tr>
+
+          <tr><td>
+                <input type="text" name="date_from" id="date-start"
+                       class="datepicker" onchange="cal()" ></td></tr>
+        </table>
+
+        <table id="pg2" class="pg2" border="1">
+          <tr><td>
+              <label class="dtp-input-label">Return</label></td></tr>
+
+          <tr><td>
+              <input type="text" id="date-end" name="date_to"
+                    class="datepicker" onchange="cal()"></td></tr>
+        </table>
+
+         <table id="pg4" class="pg4" border="1">
+           <tr><td>
+             <label class="form-info-label">Price per day:</label>
+                <input type="text" id="price-per-day" class="form-info-box"
+                     name="price-per-day" /></div></td><tr>
+          <tr><td>
+           <tr><td>
+
+           <tr><td>
+             <label class="form-info-label">Number of days:</label>
+                <input type="text" id="numdays" class="form-info-box"
+                     name="numdays"/></div></td><tr>
+              </td></tr>
+          <tr><td>
+            <label class="form-info-label">Total Price:</label>
+               <input type="text" id="total-price" class="form-info-box"
+                    name="total-price"/></div></td><tr>
+             </td></tr>
+
+          </table>
+          <div class="form-nav">
+            <a class="form-nav-next" onclick="formNav()">< Back</a>
+            <a class="form-nav-next" onclick="formNav()">Next ></a></div>
+              <!--<input type="submit" class="form-button">
+              -->
+       </form>
+      </div> <!-- container -->
+      <script type="text/javascript" src="js/flatpickr.min.js"></script>
+<!--intitialize datepicker -->
+      <script type="text/javascript">
+      flatpickr(".datepicker", {
+         minDate: new Date(),
+         inline: true,
+         altInput: true,
+         //enableTime: true,
+         altFormat: "F j, Y h:i K"
+         //maxDate: "2016-12-20",
+         // create an extra input solely for display purposes
+         //altInput: true,
+       });
+
+      </script>
+      <script>
+         //Displays only Datepicker 1 on mobile view
+         window.onload = function(){
+              document.getElementById('pg1').style.display = 'block';
+              document.getElementById('pg2').style.display = 'none';
+
+              document.getElementById("price-per-day").value = Currency() + DayPrice();
+
+            }
+          //Controls Nav between views of reserve form
+          function formNav(){
+
+            var pg1 = document.getElementById('pg1');
+            var pg2 = document.getElementById('pg2');
+
+            if (pg1.style.display == 'block'){
+                pg2.style.display = 'block';
+                pg1.style.display = 'none';
+            }else if (pg2.style.display == 'block'){
+               pg2.style.display = 'none';
+               pg1.style.display = 'block';
+            }
+          }
+
+      </script>
+      <script type="text/javascript">
+      function GetDays(){
+        var dropdt = new Date(document.getElementById("date-end").value);
+        var pickdt = new Date(document.getElementById("date-start").value);
+
+        return parseInt((dropdt - pickdt) / (24 * 3600 * 1000));
+      }// returns number of days between date 1 and date 2
+
+      function DayPrice(){
+        var dayPrice = 50;
+        return dayPrice;
+      }
+
+      function Currency(){
+        var cur = "$";
+        return cur;
+      }
+
+      function cal(){
+            var daysBetween = GetDays();
+            var dailyPrice = DayPrice();
+            var currency = Currency();
+            var totalPrice = daysBetween * dailyPrice;
+
+            if(isNaN(daysBetween) == true){
+              document.getElementById("numdays").value = 1;
+              document.getElementById("total-price").value = currency + dailyPrice;
+            }else{
+              document.getElementById("numdays").value = daysBetween;
+              document.getElementById("total-price").value = currency + totalPrice;
+            }
+
+        } //returns number of days and total price to UI
+      </script>
+
+    </body>
+<html>
